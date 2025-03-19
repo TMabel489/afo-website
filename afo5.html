@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亚洲家族办公室协会 (AFO)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Helvetica Neue", Arial, sans-serif; }
+        body { line-height: 1.6; color: #333; position: relative; overflow-x: hidden; }
+        
+        #headerCanvas { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: -1; 
+            opacity: 0.3; 
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; position: relative; }
+        .section { margin-bottom: 20px; background: rgba(255,255,255,0.95); padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        
+        h1 { font-size: 2.8em; color: #1A3D6D; margin-bottom: 30px; text-align: center; }
+        h2 { font-size: 1.8em; color: #1A3D6D; margin: 30px 0 20px; border-bottom: 2px solid #E0E6ED; padding-bottom: 12px; }
+        
+        .toggle-btn { 
+            background: #1A3D6D; 
+            color: white; 
+            border: none; 
+            padding: 12px 24px; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            margin: 10px 0;
+        }
+        .toggle-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(26,61,109,0.2); }
+        
+        .hidden-content { 
+            display: none; 
+            padding: 20px; 
+            margin-top: 15px; 
+            background: #F5F7FA; 
+            border-radius: 8px; 
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        ul { list-style: none; }
+        li { margin: 10px 0; padding-left: 20px; position: relative; }
+        li::before { content: "•"; color: #1A3D6D; position: absolute; left: 0; }
+
+        .contact-box { 
+            background: linear-gradient(135deg, #F5F7FA 0%, #E0E6ED 100%); 
+            padding: 30px; 
+            border-radius: 12px; 
+            margin-top: 40px;
+        }
+        .contact-box a { color: #1A3D6D; text-decoration: none; }
+        .contact-box a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .section { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="headerCanvas"></canvas>
+    
+    <div class="container">
+        <h1>亚洲家族办公室协会<br><span style="font-size:0.6em">(AFO)</span></h1>
+
+        <!-- 核心服务折叠区块 -->
+        <div class="section">
+            <button class="toggle-btn" onclick="toggleContent('services')">核心服务与认证体系 ✦</button>
+            <div id="services" class="hidden-content">
+                <h3>专业认证项目</h3>
+                <ul>
+                    <li><strong>CFOP™认证</strong>：需通过考试、背景审查及面试，覆盖ESG、数字资产管理等前沿领域</li>
+                    <li><strong>VIP资质审查</strong>：通过推荐信和诚信审查确认从业者资质</li>
+                </ul>
+                <h3>技术赋能平台</h3>
+                <ul>
+                    <li>GATEWAY系统：智能合约支持、交易自动化与合规解决方案</li>
+                    <li>FOM门户：涵盖私募股权、ESG项目等结构化交易功能</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 全球活动折叠区块 -->
+        <div class="section">
+            <button class="toggle-btn" onclick="toggleContent('events')">全球活动网络 ✦</button>
+            <div id="events" class="hidden-content">
+                <h3>旗舰活动</h3>
+                <ul>
+                    <li>亚洲未来领袖峰会：聚焦跨代领导力与数字化转型</li>
+                    <li>全球家族办公室闭门交流会：促成跨境联合投资</li>
+                </ul>
+                <h3>专项倡议</h3>
+                <ul>
+                    <li>MAG可持续发展计划：整合区块链技术推动慈善透明度</li>
+                    <li>影响力投资生态圈：引导资金投向教育、健康及循环经济</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 会员体系折叠区块 -->
+        <div class="section">
+            <button class="toggle-btn" onclick="toggleContent('membership')">会员体系与权益 ✦</button>
+            <div id="membership" class="hidden-content">
+                <h3>会员类别</h3>
+                <ul>
+                    <li>单一家族办公室（SFO）：年费50,000美元，含专属交易会议权限</li>
+                    <li>联合家族办公室（MFO）：年费20,000美元，享定制咨询服务</li>
+                </ul>
+                <h3>核心福利</h3>
+                <ul>
+                    <li>优先获取行业白皮书与合规支持</li>
+                    <li>参与全球共同投资者网络与闭门研讨会</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 社会责任折叠区块 -->
+        <div class="section">
+            <button class="toggle-btn" onclick="toggleContent('csr')">社会责任与未来战略 ✦</button>
+            <div id="csr" class="hidden-content">
+                <h3>2030战略重点</h3>
+                <ul>
+                    <li>教育赋能：建立跨代领导力培养体系</li>
+                    <li>绿色经济：推动ESG投资标准化框架</li>
+                </ul>
+                <h3>行业标准</h3>
+                <ul>
+                    <li>与APB联合制定《私人财富管理实践原则》</li>
+                    <li>要求会员遵守透明治理与利益冲突规避条款</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 联系方式 -->
+        <div class="contact-box">
+            <h2>联系我们</h2>
+            <ul>
+                <li>官网：<a href="https://familyoffices-asia.com" target="_blank">familyoffices-asia.com</a></li>
+                <li>秘书处：<a href="mailto:secretariat@cag.hk">secretariat@cag.hk</a></li>
+                <li>香港总部：+852 3499 3851</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Canvas动态粒子背景
+        const canvas = document.getElementById('headerCanvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const maxDistance = 150;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Point {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            points.forEach(point => {
+                point.x += point.vx;
+                point.y += point.vy;
+                if (point.x < 0 || point.x > canvas.width) point.vx *= -1;
+                if (point.y < 0 || point.y > canvas.height) point.vy *= -1;
+            });
+
+            points.forEach((a, i) => {
+                points.slice(i).forEach(b => {
+                    const dx = a.x - b.x;
+                    const dy = a.y - b.y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < maxDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(26, 61, 109, ${1 - dist/maxDistance})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                });
+                ctx.fillStyle = '#1A3D6D';
+                ctx.beginPath();
+                ctx.arc(a.x, a.y, 1.2, 0, Math.PI*2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        function init() {
+            resizeCanvas();
+            points = Array.from({ length: 40 }, () => new Point());
+            window.addEventListener('resize', resizeCanvas);
+            animate();
+        }
+
+        // 内容切换功能
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+        }
+
+        init();
+    </script>
+</body>
+</html>
